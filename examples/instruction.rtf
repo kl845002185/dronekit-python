@@ -1,0 +1,37 @@
+{\rtf1\ansi\ansicpg936\cocoartf1404\cocoasubrtf470
+{\fonttbl\f0\fnil\fcharset0 Menlo-Regular;}
+{\colortbl;\red255\green255\blue255;\red217\green234\blue202;}
+\paperw11900\paperh16840\margl1440\margr1440\vieww22540\viewh12600\viewkind0
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\partightenfactor0
+
+\f0\fs30 \cf0 \CocoaLigature0 Created by Yikai Wang in Aug 2016, this documentation is an instruction of how to control bluerov using dronekit or qgroundcontrol.\
+Run the following commands in the Terminal.\
+Any questions ask: kl845002185@gmail.com\
+\
+SSH connection to raspberry pi: \cb2 ssh pi@192.168.2.2\cb1 \
+\
+1. Control bluerov using dronekit\
+Start virtual environment of python: \cb2 source ~/ENV/bin/activate\cb1 \
+Find the python files: \cb2 cd /home/pi/ENV/lib/python2.7/site-packages/dronekit-python/examples\cb1 \
+Paste files from laptop to the raspberry pi: \cb2 scp apple@172.31.49.173:/Users/apple/PycharmProjects/BlueROV_Python/motion_test.py .\cb1 \
+Running a python file(Not recommended): \cb2 python motion_test.py\cb1 \
+Running a python file in an interactive way(Recommended):\
+	\cb2 python\cb1 \
+	>>> \cb2 \expnd0\expndtw0\kerning0
+\CocoaLigature1 exec(open("./motion_test.py").read(), globals()\cb1 \
+	>>> \'85\
+	>>> \'93ctrl + c\'94 to stop the code when necessary, and then use: \cb2 vehicle.armed = False\cb1  for emergency stop, or \cb2 motion.pitch(vehicle, speed=30, duration=3)\cb1  for floating bluerov etc.\
+ \
+\kerning1\expnd0\expndtw0 \CocoaLigature0 \
+\
+2. Control bluerov using qgroundcontrol\
+cd companion/RPI2/Raspbian/\
+Change the connection file name when the connection error appears: \cb2 nano start_mavproxy_telem_splitter.sh \cb1 \
+Start mavlink connection: \cb2 ./start_mavproxy_telem_splitter.sh\cb1  \
+In the qroundcontrol, choose the UDP:14555 connection.\
+\
+3. Others\
+Restart the raspberry pi when you get the link timeout problem: \cb2 sudo shutdown -r now\cb1 \
+If link timeout problem still cannot be fixed, just unplug and replug the pixhawk.\
+Turn off the raspberry pi before unplugging the power supply: \cb2 sudo shutdown -h now\cb1  \
+Check the connection file: \cb2 ls /dev/tty*}
